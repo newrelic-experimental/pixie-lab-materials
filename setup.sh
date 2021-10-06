@@ -1,40 +1,8 @@
 #! /bin/bash
-echo -e "Please wait while we set up your lab environment.\n"
+echo "Please wait while we update your lab environment."
 
-echo "=== Checking your dependencies ==="
-if command -v minikube &> /dev/null
-then
-    echo -e "minikube \xE2\x9C\x94"
-else
-    echo "Please install minikube"
-    exit
-fi
+kubectl apply -f kube/fetch-2.yaml
+pod=$(kubectl get pods -o name | grep mysql)
+kubectl exec -it $pod -- bash -c "mysql --database=main --password=password -e \"INSERT INTO images VALUES (2, 'pixie', 'https://tinyhats.s3.amazonaws.com/pixie.png', 'pixie.png', 'PIXIE', 'true');\"" &> /dev/null
 
-if command -v kubectl &> /dev/null
-then
-    echo -e "kubectl \xE2\x9C\x94"
-else
-    echo "Please install kubectl"
-    exit
-fi
-
-if command -v hyperkit &> /dev/null
-then
-    echo -e "hyperkit \xE2\x9C\x94"
-else
-    echo "Please install hyperkit"
-    exit
-fi
-
-if command -v helm &> /dev/null
-then
-    echo -e "helm \xE2\x9C\x94"
-else
-    echo "Please install helm"
-    exit
-fi
-
-echo -e "\n=== Spinning up your cluster ==="
-minikube start --driver=hyperkit --cni=flannel --cpus=4 --memory=8000
-kubectl apply -f kube
-minikube tunnel
+echo "Done!"
