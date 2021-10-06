@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: add-service
-          image: bitprj/mini-add-service
+          image: bitprj/add-service
           ports:
             - containerPort: 31337
           env:

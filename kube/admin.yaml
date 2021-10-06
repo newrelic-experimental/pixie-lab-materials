@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: admin-service
-          image: bitprj/mini-admin-service
+          image: bitprj/admin-service
           ports:
             - containerPort: 4040
           env:
