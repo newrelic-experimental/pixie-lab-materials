@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: fetch-service
-          image: bitprj/fetch-service
+          image: bitprj/fetch-service-beta
           ports:
             - containerPort: 1337
           env:
@@ -25,15 +25,3 @@ spec:
             - name: MANIPULATE_ENDPOINT
               value: manipulation-service:80
           imagePullPolicy: Always
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: fetch-service
-spec:
-  selector:
-    app: fetch-service
-  ports:
-    - port: 80
-      targetPort: 1337
-  type: ClusterIP
