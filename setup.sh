@@ -1,40 +1,6 @@
 #! /bin/bash
-echo -e "Please wait while we set up your lab environment.\n"
-
-echo "=== Checking your dependencies ==="
-if command -v minikube &> /dev/null
-then
-    echo -e "minikube \xE2\x9C\x94"
-else
-    echo "Please install minikube"
-    exit
-fi
-
-if command -v kubectl &> /dev/null
-then
-    echo -e "kubectl \xE2\x9C\x94"
-else
-    echo "Please install kubectl"
-    exit
-fi
-
-if command -v hyperkit &> /dev/null
-then
-    echo -e "hyperkit \xE2\x9C\x94"
-else
-    echo "Please install hyperkit"
-    exit
-fi
-
-if command -v helm &> /dev/null
-then
-    echo -e "helm \xE2\x9C\x94"
-else
-    echo "Please install helm"
-    exit
-fi
-
-echo -e "\n=== Spinning up your cluster ==="
-minikube start --driver=hyperkit --cni=flannel --cpus=4 --memory=8000
+echo "Please wait while we update your lab environment."
+pod=$(kubectl get pods -o name | grep mysql)
+kubectl exec -it $pod -- bash -c "mysql --database=main --password=password -e \"UPDATE images SET approve = 'false' WHERE id = 101;\"" &> /dev/null
 kubectl apply -f kube
-minikube tunnel
+echo "Done!"

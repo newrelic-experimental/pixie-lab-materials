@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: admin-service
-          image: bitprj/admin-service
+          image: bitprj/admin-service-delta
           ports:
             - containerPort: 4040
           env:
@@ -23,15 +23,3 @@ spec:
             - name: PASSWORD
               value: password
           imagePullPolicy: Always
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: admin-service
-spec:
-  selector:
-    app: admin-service
-  ports:
-    - port: 80
-      targetPort: 4040
-  type: ClusterIP

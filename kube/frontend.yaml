@@ -14,19 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend-service
-          image: bitprj/frontend-service
+          image: bitprj/frontend-service-delta
           ports:
             - containerPort: 3000
           imagePullPolicy: Always
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: frontend-service
-spec:
-  selector:
-    app: frontend-service
-  ports:
-    - port: 80
-      targetPort: 3000
-  type: LoadBalancer
