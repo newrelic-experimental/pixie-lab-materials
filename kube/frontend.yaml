@@ -17,4 +17,4 @@ spec:
           image: bitprj/frontend-service-delta
           ports:
             - containerPort: 3000
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent

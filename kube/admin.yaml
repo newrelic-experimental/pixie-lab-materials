@@ -22,4 +22,4 @@ spec:
               value: mysql
             - name: PASSWORD
               value: password
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
