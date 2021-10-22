@@ -17,7 +17,7 @@ spec:
           image: bitprj/manipulation-service
           ports:
             - containerPort: 80
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service

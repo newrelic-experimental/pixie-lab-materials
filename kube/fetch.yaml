@@ -24,7 +24,7 @@ spec:
               value: password
             - name: MANIPULATE_ENDPOINT
               value: manipulation-service:80
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service

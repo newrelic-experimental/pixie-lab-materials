@@ -22,7 +22,7 @@ spec:
               value: upload-service:80
             - name: ENDPOINT
               value: "$ENDPOINT"
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service

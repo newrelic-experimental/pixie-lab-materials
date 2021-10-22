@@ -24,7 +24,7 @@ spec:
               value: add-service:80
             - name: MODERATE_ENDPOINT
               value: moderate-service:80
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service

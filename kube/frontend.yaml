@@ -17,7 +17,7 @@ spec:
           image: bitprj/frontend-service
           ports:
             - containerPort: 3000
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
 ---
 apiVersion: v1
 kind: Service
