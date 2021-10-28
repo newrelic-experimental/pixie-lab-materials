@@ -21,10 +21,12 @@ class LocustUser(HeadlessChromeLocust):
     def choose_hat_type(self):
         hat_select = Select(self.client.find_element(By.ID, "typeInput"))
 
-        hat_types = hat_select.options[1:]
-        weights = [100 if hat_type.text == "PIXIE" else 1 for hat_type in hat_types]
-        random_choice = random.choices(population=hat_types, weights=weights, k=1)[0]
-        hat_select.select_by_value(random_choice.text)
+        hat_types = [o.text for o in hat_select.options[1:]]
+        if "PIXIE" in hat_types:
+            hat_select.select_by_value("PIXIE")
+        else:
+            random_choice = random.choices(hat_types)
+            hat_select.select_by_value(random_choice)
 
     def hat_me(self):
         hat_me_button = self.client.find_element(By.CSS_SELECTOR, ".btn.btn-primary.m-2")
