@@ -6,7 +6,7 @@ from realbrowserlocusts import HeadlessChromeLocust
 
 class LocustUser(HeadlessChromeLocust):
     timeout = 10
-    wait_time = between(30, 60)
+    wait_time = between(10, 15)
 
     def on_stop(self):
         self.client.quit()
@@ -22,7 +22,7 @@ class LocustUser(HeadlessChromeLocust):
         hat_select = Select(self.client.find_element(By.ID, "typeInput"))
 
         hat_types = hat_select.options[1:]
-        weights = [20 if hat_type.text == "PIXIE" else 1 for hat_type in hat_types]
+        weights = [100 if hat_type.text == "PIXIE" else 1 for hat_type in hat_types]
         random_choice = random.choices(population=hat_types, weights=weights, k=1)[0]
         hat_select.select_by_value(random_choice.text)
 
@@ -30,7 +30,7 @@ class LocustUser(HeadlessChromeLocust):
         hat_me_button = self.client.find_element(By.CSS_SELECTOR, ".btn.btn-primary.m-2")
         hat_me_button.click()
 
-    @task(3)
+    @task(2)
     def submit_hat(self):
         self.client.get("http://frontend-service")
         self.choose_num_hats()

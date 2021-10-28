@@ -24,4 +24,4 @@ RUN pip install selenium
 RUN pip install locust
 RUN pip install /usr/local/realbrowserlocusts
 
-CMD ["locust", "-f", "/usr/local/locustfile.py", "-u", "1", "-r", "0.01", "--headless"]
+CMD ["locust", "-f", "/usr/local/locustfile.py", "-u", "1", "-r", "1", "--headless"]
