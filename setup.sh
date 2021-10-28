@@ -35,7 +35,7 @@ else
 fi
 
 echo -e "\n=== Spinning up your cluster ==="
-minikube start --driver=hyperkit --cni=flannel --cpus=4 --memory=8000
-eval $(minikube docker-env)
+minikube start --driver=hyperkit --cni=flannel --cpus=4 --memory=8000 -p minikube-pixie-lab
+eval $(minikube docker-env -p minikube-pixie-lab)
 docker build simulator -t simulator
 kubectl apply -f kube
