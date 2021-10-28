@@ -6,7 +6,7 @@ from realbrowserlocusts import HeadlessChromeLocust
 
 class LocustUser(HeadlessChromeLocust):
     timeout = 10
-    wait_time = between(10, 15)
+    wait_time = between(30, 60)
 
     def on_stop(self):
         self.client.quit()
