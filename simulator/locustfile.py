@@ -5,7 +5,7 @@ from selenium.webdriver.support.select import Select
 from realbrowserlocusts import HeadlessChromeLocust
 
 class LocustUser(HeadlessChromeLocust):
-    wait_time = between(30, 60)
+    wait_time = between(15, 30)
 
     def on_stop(self):
         self.client.quit()
@@ -24,7 +24,7 @@ class LocustUser(HeadlessChromeLocust):
         if "PIXIE" in hat_types:
             hat_select.select_by_value("PIXIE")
         else:
-            random_choice = random.choices(hat_types)
+            random_choice = random.choice(hat_types)
             hat_select.select_by_value(random_choice)
 
     def hat_me(self):
