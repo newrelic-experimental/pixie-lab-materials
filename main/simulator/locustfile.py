@@ -5,6 +5,7 @@ from selenium.webdriver.support.select import Select
 from realbrowserlocusts import HeadlessChromeLocust
 
 class LocustUser(HeadlessChromeLocust):
+    timeout = 10
     wait_time = between(30, 45)
 
     def on_stop(self):
