@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: admin-service
+  template:
+    metadata:
+      labels:
+        app: admin-service
+    spec:
+      containers:
+        - name: admin-service
+          image: bitprj/admin-service-delta
+          ports:
+            - containerPort: 4040
+          env:
+            - name: HOST
+              value: mysql
+            - name: PASSWORD
+              value: password
+          imagePullPolicy: IfNotPresent
