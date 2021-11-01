@@ -14,5 +14,5 @@ spec:
     spec:
       containers:
         - name: simulator
-          image: simulator-scenario-1
-          imagePullPolicy: Never
+          image: bitprj/pixie-lab-scenario-1-simulator
+          imagePullPolicy: IfNotPresent
