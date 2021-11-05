@@ -7,11 +7,15 @@ Follow the Lab instructions here:
 ![Setup 1](/img/setup_01.png)
 2. Use or create Virtual Switch (External)  
 ![Setup 2](/img/setup_02.png)
-3. Use the scripts in this repository for PowerShell  
+3. Download and install/add to `PATH`:
+    - `kubectl.exe`
+    - `minikube.exe` (rename the filename from `minikube-windows-amd64.exe`)
+    - `helm.exe`
+4. Use the scripts in this repository for PowerShell  
     - `main\setup.ps1`
     - `scenario-1\setup.ps1`
     - `scenario-2\setup.ps1`
-4. Minor update to Pixie install script:
+5. Minor update to Pixie install script:
    - Replace `&&` with `;` to execute additional statements
    - Replace `\` with `` ` `` to continue statement on new line
 
@@ -40,3 +44,4 @@ helm upgrade --install newrelic-bundle newrelic/nri-bundle `
  --set pixie-chart.deployKey=px-dep-d4c3b2a1-f6e5-h8g7-j0i9-p5o0n4m3l2k1 `
  --set pixie-chart.clusterName=tiny-hat
  ```
+ 
