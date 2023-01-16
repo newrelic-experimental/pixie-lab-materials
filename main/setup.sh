@@ -35,5 +35,5 @@ else
 fi
 
 echo -e "\n=== Spinning up your cluster ==="
-minikube start --driver=hyperkit --cni=flannel --cpus=4 --memory=8000 -p minikube-pixie-lab
+minikube start --driver=hyperkit --cni=flannel --cpus=4 --memory=10000 -p minikube-pixie-lab
 kubectl apply -f kube
